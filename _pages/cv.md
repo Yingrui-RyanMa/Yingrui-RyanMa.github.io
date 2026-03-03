@@ -9,56 +9,41 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+## Education
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **PhD**, King's College London, 2024 - Present
+  * School of Cancer and Pharmaceutical Sciences
+  * Research focus: AI for cancer and pharmaceutical science research
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* **MSc Human and Biological Robotics**, Imperial College London, 2021 - 2022
+  * Department of Bioengineering
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **BSc Computer Science with Artificial Intelligence**, University of Nottingham Ningbo China, 2017 - 2021
 
-Publications
-======
+## Research Experience
+
+* **Research Assistant**, King's College London, March 2023 - October 2024
+
+* **Undergraduate Teaching Assistant**, University of Nottingham Ningbo China, September 2020 - December 2020
+
+* **Summer Research Intern**, Siasun Robot & Automation Co., Ltd.
+
+## Research Interests
+
+* Computational Pathology
+* Multi-modal Deep Learning
+* Cancer Research
+* Histopathology
+* Transcriptomics
+
+## Skills
+
+* **Programming**: Python, Deep Learning Frameworks
+* **Research**: Computational Pathology, Multi-modal Data Analysis
+* **Domain**: Histopathology, Transcriptomics, Cancer Research
+
+## Publications
+
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams

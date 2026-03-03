@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Ryan's Page"
 title_separator          : "-"
 name                     : &name "Yingrui Ma (Ryan)"
-description              : &description "personal description"
+description              : &description "PhD Student in AI for Cancer & Pharmaceutical Science Research at King's College London"
 url                      : https://yingrui-ryanma.github.io/ # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Yingrui-RyanMa/Yingrui-RyanMa.github.io"
@@ -24,7 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Yingrui Ma (Ryan)"
   pronouns         : "he/his"  
-  bio              : "PhD Student in Biomedical AI"
+  bio              : "PhD Student in AI for Cancer & Pharmaceutical Science Research"
   location         : "London, UK"
   employer         : "King's College London"
   uri              : # URL
@@ -32,11 +32,11 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/citations?user=Orlv_EkAAAAJ&hl=en"
   impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : # URL
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
 
@@ -44,12 +44,12 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "ryan-yingrui-ma"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # "bsky.app" # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -58,7 +58,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "yingruima"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
