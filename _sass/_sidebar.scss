@@ -92,10 +92,16 @@
   img {
     max-width: 175px;
     border-radius: 50%;
+    transition: $global-transition;
 
     @include breakpoint($large) {
       padding: 5px;
       border: 1px solid $border-color;
+    }
+
+    &:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
   }
 }
@@ -252,9 +258,11 @@
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    transition: $global-transition;
 
     &:hover {
       text-decoration: underline;
+      transform: translateX(3px);
     }
   }
 }

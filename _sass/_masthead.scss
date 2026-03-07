@@ -50,6 +50,14 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  transition: $global-transition;
+  border-radius: $border-radius;
+
+  &:not(.masthead__menu-item--lg):hover {
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.03);
+  }
 
   &--lg {
     padding-right: 2em;
