@@ -21,10 +21,10 @@ repository               : "Yingrui-RyanMa/Yingrui-RyanMa.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Yingrui Ma (Ryan)"
   pronouns         : "he/his"  
-  bio              : "PhD Student in AI for Cancer & Pharmaceutical Science Research"
+  bio              : "PhD Student in AI for Cancer & Pharmaceutical Sciences"
   location         : "London, UK"
   employer         : "King's College London"
   uri              : # URL
