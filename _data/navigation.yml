@@ -4,6 +4,9 @@ main:
   - title: "About"
     url: /about-me/
 
+  - title: "Reading"
+    url: /reading/
+
   - title: "Publications"
     url: /publications/
 

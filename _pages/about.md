@@ -7,4 +7,8 @@ redirect_from:
   - /about.html
 ---
 
-I am a PhD student at the [School of Cancer and Pharmaceutical Sciences](https://www.kcl.ac.uk/cancer), [King's College London](https://www.kcl.ac.uk/), working on AI for cancer and pharmaceutical science research. My research focuses on histopathology and transcriptomics multi-modal data analysis.
+Hey there, I'm Ryan 👋 Welcome to my world 🏰 I am currently doing a PhD at [King's College London](https://www.kcl.ac.uk/). My research focuses on interdisciplinary study combining deep learning 🧑‍💻 and cancer research 🧬.
+
+In my free time, I enjoy some reading and writing (not too consistent though 😢) But I am working on that 💪!
+
+<!--  My current projects focus on histopathology images, transcriptomics and multi-modal data analysis. -->
