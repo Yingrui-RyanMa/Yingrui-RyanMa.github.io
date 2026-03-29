@@ -175,14 +175,16 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: $background-color;
+  background: transparent;
 
   a {
     display: block;
-    margin: 0 1rem;
-    padding: 0.5rem 0;
+    margin: 0 0.75rem;
+    padding: 0.4rem 0.25rem;
     color: $masthead-link-color;
     text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
 
     &:hover {
       color: $masthead-link-color-hover;
@@ -200,6 +202,7 @@
     color: #fff;
     cursor: pointer;
     z-index: 100;
+    border-radius: 8px;
   }
 
   .visible-links {
@@ -210,11 +213,12 @@
       vertical-align: middle;
 
       &:first-child {
-        font-weight: bold;
+        font-weight: 600;
         text-wrap: wrap;
 
         a {
           margin-left: 0;
+          font-size: 1em;
         }
       }
 
@@ -233,20 +237,21 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 4px;
-        background: mix(#fff, $primary-color, 50%);
+        height: 2px;
+        background: $primary-color;
         width: 100%;
         -webkit-transition: $global-transition;
         transition: $global-transition;
         -webkit-transform: scaleX(0);
             -ms-transform: scaleX(0);
-                transform: scaleX(0); /* hide*/
+                transform: scaleX(0);
+        border-radius: 1px;
       }
 
       &:hover:before {
         -webkit-transform: scaleX(1);
             -ms-transform: scaleX(1);
-                transform: scaleX(1); /* reveal*/
+                transform: scaleX(1);
       }
     }
   }
@@ -256,56 +261,35 @@
     top: 100%;
     right: 0;
     margin-top: 15px;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     background: #fff;
-    box-shadow: 0 0 10px rgba(#000, 0.25);
+    box-shadow: 0 4px 20px rgba(#000, 0.1);
 
     a {
       margin: 0;
       padding: 10px 20px;
       font-size: $type-size-5;
+      border-radius: 8px;
 
       &:hover {
         color: $masthead-link-color-hover;
-        background: mix(#fff, $primary-color, 75%);
+        background: rgba(74, 103, 65, 0.06);
       }
     }
 
     &:before {
-      content: "";
-      position: absolute;
-      top: -11px;
-      right: 10px;
-      width: 0;
-      border-style: solid;
-      border-width: 0 10px 10px;
-      border-color: $border-color transparent;
-      display: block;
-      z-index: 0;
+      display: none;
     }
 
     &:after {
-      content: "";
-      position: absolute;
-      top: -10px;
-      right: 10px;
-      width: 0;
-      border-style: solid;
-      border-width: 0 10px 10px;
-      border-color: #fff transparent;
-      display: block;
-      z-index: 1;
+      display: none;
     }
 
     li {
       display: block;
-      border-bottom: 1px solid $border-color;
-
-      &:last-child {
-        border-bottom: none;
-      }
+      border-bottom: none;
     }
   }
 }
@@ -372,10 +356,10 @@
    ========================================================================== */
 
 .toc {
-  font-family: $sans-serif-narrow;
-  color: $gray;
+  font-family: $sans-serif;
+  color: $text-color;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   background-color: #fff;
   border: 1px solid $border-color;
   border-radius: $border-radius;

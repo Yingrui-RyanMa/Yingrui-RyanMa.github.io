@@ -4,8 +4,10 @@
 
 .masthead {
   position: fixed;
-  background: white;
-  border-bottom: 1px solid $border-color;
+  background: rgba(250, 249, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   height: $masthead-height;
   top: 0;
   width: 100%;
@@ -19,8 +21,11 @@
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 1em 1em 1em;
-    font-family: $sans-serif-narrow;
+    padding: 0.8em 1.5em;
+    font-family: $sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -37,6 +42,7 @@
 }
 
 .masthead__menu {
+  width: 100%;
 
   ul {
     margin: 0;
@@ -51,16 +57,19 @@
   list-style-type: none;
   white-space: nowrap;
   transition: $global-transition;
-  border-radius: $border-radius;
+  border-radius: 8px;
 
   &:not(.masthead__menu-item--lg):hover {
-    transform: scale(1.08);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(74, 103, 65, 0.08);
   }
 
   &--lg {
     padding-right: 2em;
-    font-weight: 700;
+    font-weight: 600;
+
+    a {
+      color: $dark-gray !important;
+      letter-spacing: -0.02em;
+    }
   }
 }

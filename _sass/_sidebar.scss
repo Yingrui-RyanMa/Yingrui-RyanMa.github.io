@@ -95,13 +95,14 @@
     transition: $global-transition;
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+      padding: 0;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     &:hover {
-      transform: scale(1.08);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transform: scale(1.04);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
     }
   }
 }
@@ -252,17 +253,17 @@
   a {
     display: block;
     margin-bottom: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding: 4px 8px;
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
     transition: $global-transition;
+    border-radius: 6px;
 
     &:hover {
-      text-decoration: underline;
-      transform: translateX(3px);
+      background: rgba(74, 103, 65, 0.06);
+      color: $primary-color;
+      transform: translateX(2px);
     }
   }
 }

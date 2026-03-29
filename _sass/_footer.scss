@@ -15,21 +15,22 @@
   height: auto;
   /* sticky footer fix end */
   margin-top: 3em;
-  color: mix(#fff, $gray, 25%);
+  color: $light-gray;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
           animation-delay: 0.45s;
-  background-color: $lighter-gray;
-  border-top: 1px solid $light-gray;
+  background-color: transparent;
+  border-top: 1px solid $border-color;
 
   footer {
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
-    max-width: 100%;
-    padding: 0 1em 1em;
+    max-width: 720px;
+    padding: 1.5em 1.5em 2em;
+    text-align: center;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -37,11 +38,11 @@
   }
 
   a {
-    color: inherit;
+    color: $primary-color;
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      color: $link-color-hover;
     }
   }
 
@@ -49,13 +50,14 @@
   .fab,
   .far,
   .fal {
-    color: mix(#fff, $gray, 25%);
+    color: $light-gray;
   }
 }
 
 .page__footer-copyright {
   font-family: $global-font-family;
   font-size: $type-size-7;
+  color: $light-gray;
 }
 
 .page__footer-follow {
@@ -69,9 +71,8 @@
     display: inline-block;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-family: $sans-serif-narrow;
+    font-family: $sans-serif;
     font-size: $type-size-6;
-    text-transform: uppercase;
   }
 
   li + li:before {
@@ -81,7 +82,7 @@
 
   a {
     padding-right: 10px;
-    font-weight: bold;
+    font-weight: 500;
   }
 
   .social-icons {
