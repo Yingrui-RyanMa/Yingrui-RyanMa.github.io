@@ -2,7 +2,7 @@
 layout: archive
 title: "CV"
 permalink: /cv/
-author_profile: true
+author_profile: false
 redirect_from:
   - /resume
 ---
@@ -42,7 +42,6 @@ redirect_from:
 * **Research**: Computational Pathology, Multi-modal Data Analysis
 * **Domain**: Histopathology, Transcriptomics, Cancer Research
 
-## Publications
 
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}

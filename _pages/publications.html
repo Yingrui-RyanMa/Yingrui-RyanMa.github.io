@@ -2,35 +2,39 @@
 layout: archive
 title: "Publications"
 permalink: /publications/
-author_profile: true
+author_profile: false
 ---
 
 {% if site.author.googlescholar %}
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% include base_path %}
+<ol reversed>
+  <li>
+    <strong>AI in Histopathology Explorer for comprehensive analysis of the evolving AI landscape in histopathology</strong><br>
+    <strong>Yingrui Ma</strong>, Shivprasad Jamdade, Lakshmi Konduri, Heba Sailem<br>
+    <em>npj Digital Medicine</em>, 2025<br>
+    <a href="https://doi.org/10.1038/s41746-025-01524-2">doi:10.1038/s41746-025-01524-2</a>
+  </li>
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+  <li>
+    <strong>Exploring Metamorphic Testing for Fake-News Detection Software: A Case Study</strong><br>
+    Lin Miao, Dave Towey, <strong>Yingrui Ma</strong>, Tsong Yueh Chen, Zhi Quan Zhou<br>
+    <em>2023 IEEE 47th Annual Computers, Software, and Applications Conference (COMPSAC)</em>, 2023<br>
+    <a href="https://doi.org/10.1109/COMPSAC57700.2023.00122">doi:10.1109/COMPSAC57700.2023.00122</a>
+  </li>
 
+  <li>
+    <strong>Metamorphic Testing of Fake News Detection Software</strong><br>
+    <strong>Yingrui Ma</strong>, Dave Towey, Tsong Yueh Chen, Zhi Quan Zhou<br>
+    <em>2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC)</em>, 2021<br>
+    <a href="https://doi.org/10.1109/COMPSAC51774.2021.00224">doi:10.1109/COMPSAC51774.2021.00224</a>
+  </li>
 
-
+  <li>
+    <strong>A Data-driven Affective Text Classification Analysis</strong><br>
+    Saeid Pourroostaei Ardakani, Can Zhou, Xuting Wu, <strong>Yingrui Ma</strong>, Jizhou Che<br>
+    <em>2021 20th IEEE International Conference on Machine Learning and Applications (ICMLA)</em>, 2021<br>
+    <a href="https://doi.org/10.1109/ICMLA52953.2021.00038">doi:10.1109/ICMLA52953.2021.00038</a>
+  </li>
+</ol>
