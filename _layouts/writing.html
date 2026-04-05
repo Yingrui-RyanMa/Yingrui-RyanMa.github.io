@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+
+    <div class="page__inner-wrap">
+      <header class="writing-header">
+        {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+        <label class="bionic-toggle">
+          <span class="bionic-toggle__label">ADHD-friendly</span>
+          <input type="checkbox" id="bionic-switch">
+          <span class="bionic-toggle__slider"></span>
+        </label>
+      </header>
+
+      <section class="page__content writing-content" itemprop="text">
+        {{ content }}
+      </section>
+
+      <footer class="page__meta">
+        {% if site.data.ui-text[site.locale].meta_label %}
+          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+        {% endif %}
+        {% include page__taxonomy.html %}
+      </footer>
+
+      {% if page.share %}{% include social-share.html %}{% endif %}
+    </div>
+  </article>
+</div>
+
+<script>
+(function () {
+  var toggle = document.getElementById('bionic-switch');
+  var content = document.querySelector('.writing-content');
+  var original = content.innerHTML;
+  var bionic = null;
+
+  function toBionic(el) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach(function (node) {
+      var text = node.nodeValue;
+      if (!text.trim()) return;
+
+      var span = document.createElement('span');
+      // Split on word boundaries, preserving whitespace
+      var parts = text.split(/(\s+)/);
+      parts.forEach(function (part) {
+        if (/^\s+$/.test(part)) {
+          span.appendChild(document.createTextNode(part));
+          return;
+        }
+        if (!part) return;
+        // Bold roughly the first half of the word (min 1 char)
+        var boldLen = Math.max(1, Math.ceil(part.length * 0.45));
+        var b = document.createElement('b');
+        b.textContent = part.slice(0, boldLen);
+        span.appendChild(b);
+        span.appendChild(document.createTextNode(part.slice(boldLen)));
+      });
+
+      node.parentNode.replaceChild(span, node);
+    });
+  }
+
+  toggle.addEventListener('change', function () {
+    if (toggle.checked) {
+      if (!bionic) {
+        // Build bionic version
+        var clone = content.cloneNode(true);
+        toBionic(clone);
+        bionic = clone.innerHTML;
+      }
+      content.innerHTML = bionic;
+      content.classList.add('bionic-active');
+    } else {
+      content.innerHTML = original;
+      content.classList.remove('bionic-active');
+    }
+  });
+})();
+</script>

@@ -1,0 +1,21 @@
+---
+layout: archive
+title: "Sweet Dreams, Sweet Dreams"
+permalink: /writing/
+author_profile: false
+body_class: page--writing
+---
+
+<p>I dream every single night since I was little. I used to believe dreams were prophecies — not literally, but that things would be projected, directly or in reverse. Now I think it makes more sense that my brain just processes the past and unleashes emotions, producing a film from memories.</p>
+
+<p>Some of my dreams are vivid enough to surprise even me — the details, the feelings, the plots. I’m not a writer, and I’m not great at telling stories, but some of these are too mysterious not to share. Most are short. I’ve made up names and connected loose threads where the dream didn’t quite make sense, but the twists and the craziness are all real. I hope you enjoy them.</p>
+
+<div class="writing-grid">
+  {% for story in site.writing %}
+    <a class="writing-card" href="{{ story.url | prepend: site.baseurl }}">
+      <span class="writing-card__icon"><i class="fas fa-moon"></i></span>
+      <span class="writing-card__title">{{ story.title }}</span>
+      <span class="writing-card__desc">{{ story.excerpt | strip_html | truncate: 120 }}</span>
+    </a>
+  {% endfor %}
+</div>

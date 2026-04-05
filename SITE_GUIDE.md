@@ -16,6 +16,8 @@ This document explains the structure of this Jekyll academic website and where t
 | CV / Resume | `_pages/cv.md` |
 | Publications list | `_pages/publications.html` |
 | Library (books & podcasts) | `_pages/reading.html` |
+| Writing page (dream stories) | `_pages/writing.html` |
+| Individual stories | `_writing/*.md` |
 | Projects page | `_pages/projects.html` |
 | Individual project pages | `_portfolio/*.md` |
 | Music page | `_pages/music.html` |
@@ -36,20 +38,24 @@ This document explains the structure of this Jekyll academic website and where t
 │   ├── projects.html        # Projects archive page (permalink: /projects/)
 │   ├── music.html           # Music page (permalink: /music/)
 │   ├── reading.html         # Library page (permalink: /library/, redirects from /reading/)
+│   ├── writing.html         # Writing page (permalink: /writing/)
 │   ├── publications.html    # Publications page
 │   ├── cv.md                # CV page
 │   └── 404.md               # 404 error page
 ├── _portfolio/              # Project collection pages
 │   ├── histopath-dl.md      # Deep Learning for Histopathology project
 │   └── multimodal-cancer.md # Multi-modal Cancer Analysis project
+├── _writing/                # Writing collection (dream stories)
+│   └── a-dream-story.md     # "The Greatest" — first dream story
 ├── _layouts/                # HTML page templates
 │   ├── homepage.html        # Homepage layout (hero + tarot side cards)
+│   ├── writing.html         # Writing story layout (bionic reading toggle)
 │   ├── single.html          # Single page layout (used by library, projects)
-│   ├── archive.html         # Archive layout (used by publications, CV, projects, music)
+│   ├── archive.html         # Archive layout (used by publications, CV, projects, music, writing)
 │   └── default.html         # Base layout wrapping all pages
 ├── _includes/               # Reusable HTML partials
 ├── _sass/                   # SCSS stylesheets
-│   ├── _homepage.scss       # Homepage hero, tarot cards, project/music archive styles
+│   ├── _homepage.scss       # Homepage hero, tarot cards, project/music/writing archive styles
 │   ├── _reading.scss        # Library page card & rating styles
 │   ├── _page.scss           # Single page layout styles
 │   ├── _archive.scss        # Archive layout styles
@@ -138,14 +144,34 @@ author_profile: false
 - Each artist card includes a vinyl icon, name, genre, and a short note
 - Edit `_pages/music.html` directly to add or remove artists
 
-### 6. Publications (`_pages/publications.html`)
+### 6. Writing (`_pages/writing.html` + `_writing/`)
+
+- **Archive page permalink:** `/writing/`
+- **Body class:** `page--writing` (enables 🌙😴 emoji background and justified text)
+- Lists all items from the `_writing/` collection in a card grid
+- Individual story pages use the `writing` layout (`_layouts/writing.html`), which includes an **ADHD-friendly bionic reading toggle** in the top-right corner. When enabled, the first half of each word is bolded to aid focus.
+- To add a new story: create a markdown file in `_writing/` with front matter:
+
+```yaml
+---
+title: "Story Title"
+excerpt: "Short description for the archive card."
+collection: writing
+permalink: /writing/your-story-slug/
+author_profile: false
+---
+```
+
+- The `writing` layout, `body_class`, and `author_profile: false` are set automatically via `_config.yml` defaults for the `writing` collection
+
+### 7. Publications (`_pages/publications.html`)
 
 - **Permalink:** `/publications/`
 - Papers are listed directly in HTML as an ordered list, in reverse chronological order
 - Each entry includes: title, authors (your name bolded), venue, year, and DOI link
 - To add a new paper, add a new `<li>` entry in the appropriate position
 
-### 7. Library (`_pages/reading.html`)
+### 8. Library (`_pages/reading.html`)
 
 - **Permalink:** `/library/` (redirects from `/reading/`)
 - **Layout:** `single` with body class `page--reading` (enables emoji background)
@@ -187,13 +213,13 @@ Each item has a 5-star rating using Unicode star characters (`★`) with CSS cla
 
 Example for 3.5 stars: 3× `star--filled`, 1× `star--half`, 1× `star--empty`.
 
-### 8. CV Page (`_pages/cv.md`)
+### 9. CV Page (`_pages/cv.md`)
 
 - **Permalink:** `/cv/`
 - Contains: Education, Research Experience, Research Interests, Skills
 - All content is hand-written markdown — update directly
 
-### 9. Navigation Bar (`_data/navigation.yml`)
+### 10. Navigation Bar (`_data/navigation.yml`)
 
 Controls which links appear in the top menu bar:
 
@@ -203,6 +229,8 @@ main:
     url: /projects/
   - title: "Music"
     url: /music/
+  - title: "Writing"
+    url: /writing/
   - title: "Library"
     url: /library/
   - title: "Publications"
@@ -213,7 +241,7 @@ main:
 
 To add a new page: add an entry here and create a corresponding file in `_pages/`.
 
-### 10. Downloadable Files (`files/`)
+### 11. Downloadable Files (`files/`)
 
 Place any PDFs, slides, or documents here. They'll be accessible at `/files/filename.pdf`.
 
@@ -221,7 +249,7 @@ Place any PDFs, slides, or documents here. They'll be accessible at `/files/file
 
 ## Layout Notes
 
-- Pages with `author_profile: false` (Library, Publications, CV, Projects, Music, Portfolio) display content centered without the sidebar
+- Pages with `author_profile: false` (Library, Writing, Publications, CV, Projects, Music, Portfolio) display content centered without the sidebar
 - The centered layout is handled via CSS `#main > &:first-child` rules in `_page.scss` and `_archive.scss`
 - The homepage uses its own `homepage` layout with a hero section and tarot side cards
 - The main content column has a thin border (`rgba(201, 185, 154, 0.35)`) that visually connects with the tarot cards
