@@ -1,8 +1,14 @@
 # The following is the order of the links in the header of the website.
 
 main:
-  - title: "Reading"
-    url: /reading/
+  - title: "Projects"
+    url: /projects/
+
+  - title: "Music"
+    url: /music/
+
+  - title: "Library"
+    url: /library/
 
   - title: "Publications"
     url: /publications/

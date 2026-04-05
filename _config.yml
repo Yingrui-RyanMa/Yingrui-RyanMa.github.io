@@ -8,9 +8,9 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Ryan's Page"
+title                    : "World of Ryan"
 title_separator          : "-"
-name                     : &name "Yingrui Ma (Ryan)"
+name                     : &name "Yingrui Ma"
 description              : &description "PhD Student in AI for Cancer & Pharmaceutical Science Research at King's College London"
 url                      : https://yingrui-ryanma.github.io/ # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,7 +22,7 @@ repository               : "Yingrui-RyanMa/Yingrui-RyanMa.github.io"
 author:
   # Biographic information
   avatar           : "profile.jpg"
-  name             : "Yingrui Ma (Ryan)"
+  name             : "Yingrui Ma"
   pronouns         : "he/his"  
   bio              : "PhD Student in AI for Cancer & Pharmaceutical Sciences"
   location         : "London, UK"
@@ -270,7 +270,7 @@ defaults:
       type: portfolio
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comment: true
   # _talks

@@ -1,0 +1,16 @@
+---
+layout: archive
+title: "Projects"
+permalink: /projects/
+author_profile: false
+---
+
+<div class="projects-grid">
+  {% for post in site.portfolio %}
+    <a class="project-archive-card" href="{{ post.url | prepend: site.baseurl }}">
+      <span class="project-archive-card__icon"><i class="fas fa-folder-open"></i></span>
+      <span class="project-archive-card__title">{{ post.title }}</span>
+      <span class="project-archive-card__desc">{{ post.excerpt | strip_html | truncate: 120 }}</span>
+    </a>
+  {% endfor %}
+</div>

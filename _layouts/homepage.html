@@ -7,50 +7,81 @@ layout: default
 {% assign author = site.author %}
 
 <div id="main" role="main">
-  <div class="homepage-hero">
-    <div class="homepage-hero__photo">
-      {% if author.avatar contains "://" %}
-        <img src="{{ author.avatar }}" alt="{{ author.name }}">
-      {% else %}
-        <img src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}">
+  <div class="homepage-wrapper">
+    <!-- Project cards -->
+    <a href="{{ base_path }}/portfolio/histopath-dl/" class="tarot-card tarot-card--project tarot-card--left tarot-card--pos-top">
+      <span class="tarot-card__icon"><i class="fas fa-microscope"></i></span>
+      <span class="tarot-card__flourish"></span>
+      <span class="tarot-card__title">Histopathology DL</span>
+      <span class="tarot-card__desc">Deep learning for cancer image analysis</span>
+      <span class="tarot-card__flourish"></span>
+    </a>
+    <a href="{{ base_path }}/portfolio/multimodal-cancer/" class="tarot-card tarot-card--project tarot-card--right tarot-card--pos-top">
+      <span class="tarot-card__icon"><i class="fas fa-dna"></i></span>
+      <span class="tarot-card__flourish"></span>
+      <span class="tarot-card__title">Multi-modal Cancer</span>
+      <span class="tarot-card__desc">Integrating imaging &amp; omics data</span>
+      <span class="tarot-card__flourish"></span>
+    </a>
+
+    <!-- Music card -->
+    <a href="{{ base_path }}/music/" class="tarot-card tarot-card--music tarot-card--left tarot-card--pos-bottom">
+      <span class="tarot-card__icon"><i class="fas fa-record-vinyl"></i></span>
+      <span class="tarot-card__subtitle">My top 3 favourite singers</span>
+      <span class="tarot-card__flourish"></span>
+      <span class="tarot-card__list-item">Lana Del Rey</span>
+      <span class="tarot-card__list-item">Blackpink</span>
+      <span class="tarot-card__list-item">SZA</span>
+      <span class="tarot-card__flourish"></span>
+    </a>
+
+    <div class="homepage-center">
+      <div class="homepage-hero">
+        <div class="homepage-hero__photo">
+          {% if author.avatar contains "://" %}
+            <img src="{{ author.avatar }}" alt="{{ author.name }}">
+          {% else %}
+            <img src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}">
+          {% endif %}
+        </div>
+
+        <div class="homepage-hero__info">
+          <h1 class="homepage-hero__greeting">{{ author.name | split: ' (' | first }}</h1>
+          {% if author.pronouns %}<p class="homepage-hero__pronouns">{{ author.pronouns }}</p>{% endif %}
+          {% if author.bio %}<p class="homepage-hero__bio">{{ author.bio }}</p>{% endif %}
+          {% if author.employer %}<p class="homepage-hero__detail"><i class="fas fa-fw fa-building-columns" aria-hidden="true"></i> {{ author.employer }}</p>{% endif %}
+          {% if author.location %}<p class="homepage-hero__detail"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ author.location }}</p>{% endif %}
+
+          <div class="homepage-hero__social">
+            {% if author.email %}
+              <a href="mailto:{{ author.email }}" class="homepage-hero__social-btn" title="Email">
+                <i class="fas fa-fw fa-envelope"></i>
+              </a>
+            {% endif %}
+            {% if author.googlescholar %}
+              <a href="{{ author.googlescholar }}" class="homepage-hero__social-btn" title="Google Scholar">
+                <i class="ai ai-google-scholar"></i>
+              </a>
+            {% endif %}
+            {% if author.github %}
+              <a href="https://github.com/{{ author.github }}" class="homepage-hero__social-btn" title="GitHub">
+                <i class="fab fa-fw fa-github"></i>
+              </a>
+            {% endif %}
+            {% if author.linkedin %}
+              <a href="https://www.linkedin.com/in/{{ author.linkedin }}" class="homepage-hero__social-btn" title="LinkedIn">
+                <i class="fab fa-fw fa-linkedin"></i>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if content != "" %}
+        <div class="homepage-hero__content">
+          {{ content }}
+        </div>
       {% endif %}
     </div>
-
-    <div class="homepage-hero__info">
-      <h1 class="homepage-hero__greeting">Hey there, I'm {{ author.name | split: ' (' | first }}</h1>
-      {% if author.pronouns %}<p class="homepage-hero__pronouns">{{ author.pronouns }}</p>{% endif %}
-      {% if author.bio %}<p class="homepage-hero__bio">{{ author.bio }}</p>{% endif %}
-      {% if author.employer %}<p class="homepage-hero__detail"><i class="fas fa-fw fa-building-columns" aria-hidden="true"></i> {{ author.employer }}</p>{% endif %}
-      {% if author.location %}<p class="homepage-hero__detail"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ author.location }}</p>{% endif %}
-
-      <div class="homepage-hero__social">
-        {% if author.email %}
-          <a href="mailto:{{ author.email }}" class="homepage-hero__social-btn" title="Email">
-            <i class="fas fa-fw fa-envelope"></i>
-          </a>
-        {% endif %}
-        {% if author.googlescholar %}
-          <a href="{{ author.googlescholar }}" class="homepage-hero__social-btn" title="Google Scholar">
-            <i class="ai ai-google-scholar"></i>
-          </a>
-        {% endif %}
-        {% if author.github %}
-          <a href="https://github.com/{{ author.github }}" class="homepage-hero__social-btn" title="GitHub">
-            <i class="fab fa-fw fa-github"></i>
-          </a>
-        {% endif %}
-        {% if author.linkedin %}
-          <a href="https://www.linkedin.com/in/{{ author.linkedin }}" class="homepage-hero__social-btn" title="LinkedIn">
-            <i class="fab fa-fw fa-linkedin"></i>
-          </a>
-        {% endif %}
-      </div>
-    </div>
   </div>
-
-  {% if content != "" %}
-    <div class="homepage-hero__content">
-      {{ content }}
-    </div>
-  {% endif %}
 </div>

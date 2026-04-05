@@ -90,4 +90,39 @@ body.page--reading::before {
     font-size: 0.85em;
     color: $light-gray;
   }
+
+  &__rating {
+    display: flex;
+    gap: 0.2em;
+    margin-top: 0.3em;
+
+    .star {
+      font-size: 0.85em;
+      line-height: 1;
+    }
+
+    .star--filled {
+      color: #e8a92e;
+    }
+
+    .star--half {
+      position: relative;
+      color: #ddd;
+
+      &::before {
+        content: "\2733";
+        content: "★";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50%;
+        overflow: hidden;
+        color: #e8a92e;
+      }
+    }
+
+    .star--empty {
+      color: #ddd;
+    }
+  }
 }
