@@ -10,7 +10,7 @@ This document explains the structure of this Jekyll academic website and where t
 |---|---|
 | Name, bio, email, social links | `_config.yml` (author section) |
 | Site title & description | `_config.yml` (top section) |
-| Profile picture | Replace `images/profile.png` |
+| Profile picture | Replace `images/profile.jpg` |
 | Homepage greeting & content | `_pages/about.md` and `_layouts/homepage.html` |
 | Homepage tarot cards (projects & music) | `_layouts/homepage.html` |
 | CV / Resume | `_pages/cv.md` |
@@ -50,7 +50,7 @@ This document explains the structure of this Jekyll academic website and where t
 ├── _layouts/                # HTML page templates
 │   ├── homepage.html        # Homepage layout (hero + tarot side cards)
 │   ├── writing.html         # Writing story layout (bionic reading toggle)
-│   ├── single.html          # Single page layout (used by library, projects)
+│   ├── single.html          # Single page layout (used by library, portfolio pages)
 │   ├── archive.html         # Archive layout (used by publications, CV, projects, music, writing)
 │   └── default.html         # Base layout wrapping all pages
 ├── _includes/               # Reusable HTML partials
@@ -65,7 +65,6 @@ This document explains the structure of this Jekyll academic website and where t
 ├── assets/                  # CSS, JS, fonts
 ├── images/                  # Site images (profile photo, icons, etc.)
 ├── files/                   # Downloadable static files (PDFs, slides)
-├── markdown_generator/      # Scripts to generate content from TSV data
 └── .github/workflows/       # GitHub Actions CI/CD config
 ```
 
@@ -79,8 +78,8 @@ The author section controls the homepage hero and metadata:
 
 ```yaml
 author:
-  avatar:    "profile.png"
-  name:      "Yingrui Ma (Ryan)"
+  avatar:    "profile.jpg"
+  name:      "Yingrui Ma"
   pronouns:  "he/his"
   bio:       "PhD Student in AI..."
   location:  "London, UK"
@@ -93,9 +92,9 @@ author:
 
 **Important:** Changes to `_config.yml` require restarting the Jekyll server — live reload won't pick them up.
 
-### 2. Profile Picture (`images/profile.png`)
+### 2. Profile Picture (`images/profile.jpg`)
 
-Replace this file with your own photo. Keep the filename `profile.png` or update the `author.avatar` value in `_config.yml`.
+Replace this file with your own photo. Keep the filename `profile.jpg` or update the `author.avatar` value in `_config.yml`.
 
 ### 3. Homepage (`_pages/about.md` + `_layouts/homepage.html`)
 
