@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal academic website for Yingrui Ma (Ryan), built with the [Academic Pages](https://academicpages.github.io/) template — a fork of the Minimal Mistakes Jekyll theme. Deployed to GitHub Pages at https://yingrui-ryanma.github.io/.
+Personal academic website for Yingrui Ma (Ryan), deployed to GitHub Pages at
+https://yingrui-ryanma.github.io/. Originally derived from the
+[Academic Pages](https://academicpages.github.io/) template (a fork of the Minimal
+Mistakes Jekyll theme), but the unused template machinery has been removed — see
+"What is intentionally absent" below before adding anything back.
 
 ## Development Commands
 
@@ -13,34 +17,43 @@ Personal academic website for Yingrui Ma (Ryan), built with the [Academic Pages]
 bundle install
 
 # Serve locally with live reload (available at localhost:4000)
-jekyll serve -l -H localhost
 bundle exec jekyll serve -l -H localhost
 
 # Docker alternative
 docker build -t jekyll-site .
 docker run -p 4000:4000 --rm -v $(pwd):/usr/src/app jekyll-site
-
-# Rebuild minified JS (rarely needed)
-npm run build:js
 ```
 
 **Note:** `_config.yml` changes require a server restart — they are not picked up by live reload.
 
 ## Architecture
 
-- **`_config.yml`** — Central configuration: site metadata, author profile/social links, collection definitions, plugin list. This is the primary file for site-wide changes.
-- **`_data/navigation.yml`** — Controls the top navigation bar links. Currently shows Publications and CV.
-- **`_pages/`** — Top-level site pages. `about.md` (permalink `/`) is the homepage.
-- **`_publications/`**, **`_talks/`**, **`_teaching/`**, **`_portfolio/`**, **`_posts/`** — Jekyll collections for content. Each collection has a corresponding archive page in `_pages/` and is configured in `_config.yml` under `collections` and `defaults`.
-- **`_layouts/`** — Page templates (`single.html`, `talk.html`, `archive.html`, etc.) extending `default.html` → `compress.html`.
-- **`_includes/`** — Reusable HTML partials (author profile sidebar, head, footer, etc.). `author-profile.html` renders the sidebar from `_config.yml` author settings.
-- **`_sass/`** — SCSS stylesheets, compiled automatically by Jekyll.
-- **`files/`** — Static files (PDFs, etc.) served at `/files/filename`.
-- **`images/`** — Site images including author avatar (`profile.png`).
-- **`markdown_generator/`** — Python/Jupyter scripts to generate publication and talk markdown files from TSV data.
+- **`_config.yml`** — Site metadata, author profile/social links, collection definitions, plugin list. Primary file for site-wide changes.
+- **`_data/navigation.yml`** — Top navigation bar: Projects, Music, Writing, Library, Publications, CV.
+- **`_data/ui-text.yml`** — Theme i18n strings, read via `site.data.ui-text[site.locale]`.
+- **`_pages/`** — Top-level pages. `about.md` (permalink `/`) is the homepage.
+- **`_portfolio/`**, **`_writing/`** — The only two Jekyll collections. `_portfolio` is listed by `_pages/projects.html`; `_writing` by `_pages/writing.html`.
+- **`_layouts/`** — `homepage`, `archive`, `single`, `writing`, all extending `default.html` → `compress.html`.
+- **`_includes/`** — Reusable partials (head, masthead, footer, sidebar, author profile, SEO, social share).
+- **`_sass/`** — SCSS, compiled by Jekyll via `assets/css/main.scss`. Site-specific styles live in `_homepage.scss` and `_reading.scss`.
+- **`files/`** — Static files served at `/files/filename`.
+- **`images/`** — Site images including the author avatar (`profile.jpg`, set by `author.avatar`).
+
+`SITE_GUIDE.md` is the human-facing editing guide and covers each page in detail.
+
+## What is intentionally absent
+
+The following template features were removed because this site does not use them.
+Do not reintroduce them incidentally:
+
+- Collections: `_posts`, `_publications`, `_talks`, `_teaching`. Publications are hand-written HTML in `_pages/publications.html`.
+- Comments (Disqus/Discourse/Facebook/staticman) and analytics providers.
+- Pagination, category/tag archives, related posts, talk map, `markdown_generator/`.
+- Layouts `talk`, `splash`, `archive-taxonomy`.
 
 ## Content Workflow
 
-To add a publication, talk, or teaching entry: create a markdown file in the corresponding `_collection/` directory with appropriate front matter (see existing examples or use `markdown_generator/`).
-
-To add a new navigation item: edit `_data/navigation.yml` and create the target page in `_pages/`.
+- **New project:** add a markdown file to `_portfolio/` with `collection: portfolio` and a `permalink`.
+- **New story:** add a markdown file to `_writing/` with `collection: writing` and a `permalink`.
+- **New publication:** add an `<li>` to `_pages/publications.html`.
+- **New nav item:** edit `_data/navigation.yml` and create the target page in `_pages/`.

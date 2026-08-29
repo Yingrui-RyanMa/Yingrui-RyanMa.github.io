@@ -7,8 +7,6 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
-
 ## Education
 
 * **PhD**, King's College London, 2024 - Present
@@ -41,8 +39,3 @@ redirect_from:
 * **Programming**: Python, Deep Learning Frameworks
 * **Research**: Computational Pathology, Multi-modal Data Analysis
 * **Domain**: Histopathology, Transcriptomics, Cancer Research
-
-
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
