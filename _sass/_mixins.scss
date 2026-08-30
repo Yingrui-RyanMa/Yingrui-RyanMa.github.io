@@ -51,3 +51,17 @@
     display: table;
   }
 }
+
+/*
+   Stain rule — the site's signature.
+   Haematoxylin into eosin, the two stains in the order they are applied.
+   Used under section heads; it is the only decorative element in the design.
+   ========================================================================== */
+@mixin stain-rule($height: 2px, $top: 0.55em) {
+  content: "";
+  display: block;
+  height: $height;
+  margin-top: $top;
+  border-radius: $height;
+  background: linear-gradient(90deg, $haematoxylin, $eosin 70%, $eosin-pale);
+}

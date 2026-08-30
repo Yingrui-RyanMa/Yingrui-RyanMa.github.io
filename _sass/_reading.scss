@@ -10,16 +10,18 @@ body.page--reading::before {
   margin: 0 0 3em;
 
   &__label {
-    display: inline-block;
-    font-size: 0.7em;
-    font-weight: 600;
+    display: block;
+    font-family: $monospace;
+    font-size: 0.66em;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2em 0.6em;
-    border-radius: 6px;
+    letter-spacing: 0.16em;
     margin-bottom: 1.2em;
-    background: rgba(74, 103, 65, 0.1);
-    color: $primary-color;
+    color: $haematoxylin;
+
+    &::after {
+      @include stain-rule(2px, 0.5em);
+    }
   }
 }
 
@@ -39,24 +41,48 @@ body.page--reading::before {
   align-items: center;
   gap: 1em;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 7px;
   padding: 1em;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid $border-color;
   transition: $global-transition;
   text-decoration: none;
   color: inherit;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    border-color: rgba(74, 103, 65, 0.15);
+    transform: translateY(-2px);
+    border-color: #d6cbe2;
+    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
   }
 
   &__cover {
     flex-shrink: 0;
     width: 80px;
     height: 110px;
+
+    /* OpenLibrary answers 200 with a blank pixel when it has no cover, so the
+       URLs carry ?default=false to force a real 404 and let onerror fire.
+       A missing cover is then typeset rather than left as an empty box. */
+    &.is-missing {
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(150deg, $eosin-pale, #cbb9d4);
+      border-radius: 3px;
+      box-shadow: inset -6px 0 8px -6px rgba(36, 28, 51, 0.45);
+      overflow: hidden;
+
+      &::after {
+        content: attr(data-title);
+        display: block;
+        padding: 0.5em 0.55em;
+        font-family: $display;
+        font-size: 0.62em;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: $haematoxylin-deep;
+        text-align: left;
+      }
+    }
     background: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     display: flex;
@@ -81,13 +107,16 @@ body.page--reading::before {
   }
 
   &__title {
-    font-size: 1em;
-    font-weight: 600;
-    color: $dark-gray;
+    font-family: $display;
+    font-size: 0.94em;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.25;
+    color: $haematoxylin-deep;
   }
 
   &__author {
-    font-size: 0.85em;
+    font-size: 0.82em;
     color: $light-gray;
   }
 
@@ -102,12 +131,12 @@ body.page--reading::before {
     }
 
     .star--filled {
-      color: #e8a92e;
+      color: $eosin;
     }
 
     .star--half {
       position: relative;
-      color: #ddd;
+      color: #d9d3e0;
 
       &::before {
         content: "\2733";
@@ -117,12 +146,12 @@ body.page--reading::before {
         top: 0;
         width: 50%;
         overflow: hidden;
-        color: #e8a92e;
+        color: $eosin;
       }
     }
 
     .star--empty {
-      color: #ddd;
+      color: #d9d3e0;
     }
   }
 }

@@ -49,7 +49,16 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  font-family: $display;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  color: $haematoxylin-deep;
+
+  &::after {
+    @include stain-rule(2px, 0.5em);
+    max-width: 8em;
+  }
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -89,7 +98,7 @@
   a {
     text-decoration: none;
     color: $link-color;
-    border-bottom: 1px solid rgba(74, 103, 65, 0.3);
+    border-bottom: 1px solid rgba(91, 75, 138, 0.3);
     transition: $global-transition;
 
     &:hover {

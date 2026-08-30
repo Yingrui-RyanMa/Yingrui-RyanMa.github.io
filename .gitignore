@@ -15,3 +15,6 @@ package-lock.json
 # Bundler: gems are installed into the project, not committed
 .bundle/
 vendor/
+
+# iCloud sync conflict copies (this repo lives under ~/Desktop)
+* 2.*

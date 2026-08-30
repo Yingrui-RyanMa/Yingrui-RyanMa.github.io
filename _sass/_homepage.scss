@@ -2,7 +2,6 @@
    HOMEPAGE HERO — chester.how inspired
    ========================================================================== */
 
-/* Wrapper: center column with tarot cards on each side */
 .homepage-wrapper {
   position: relative;
   max-width: 720px;
@@ -11,11 +10,7 @@
 
 .homepage-center {
   position: relative;
-  z-index: 2; /* sits on top, covering inner half of cards */
   background: $background-color;
-  border: 1px solid rgba(201, 185, 154, 0.35);
-  border-radius: 12px;
-  padding: 0.5em 0;
 }
 
 .homepage-hero {
@@ -48,16 +43,15 @@
       border: none;
       object-fit: cover;
       transition: $global-transition;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 0 1px $border-color, 0 0 0 6px $slide-white, 0 0 0 7px $eosin-pale;
 
       @include breakpoint($medium) {
-        width: 160px;
-        height: 160px;
+        width: 150px;
+        height: 150px;
       }
 
       &:hover {
-        transform: scale(1.04) rotate(2deg);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 0 0 1px $border-color, 0 0 0 6px $slide-white, 0 0 0 7px $eosin;
       }
     }
   }
@@ -67,15 +61,16 @@
   }
 
   &__greeting {
-    margin: 0 0 0.2em;
-    font-size: 1.75em;
-    font-weight: 600;
-    color: $dark-gray;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+    margin: 0 0 0.25em;
+    font-family: $display;
+    font-size: 2.1em;
+    font-weight: 800;
+    color: $haematoxylin-deep;
+    letter-spacing: -0.035em;
+    line-height: 1.03;
 
     @include breakpoint($medium) {
-      font-size: 2em;
+      font-size: 2.6em;
     }
   }
 
@@ -89,27 +84,32 @@
   }
 
   &__pronouns {
-    margin: 0 0 0.5em;
-    font-size: $type-size-6;
+    margin: 0 0 0.6em;
+    font-family: $monospace;
+    font-size: 0.7em;
+    letter-spacing: 0.02em;
     color: $light-gray;
   }
 
   &__bio {
-    margin: 0.3em 0 0.6em;
-    font-size: 1.05em;
-    color: mix(#000, $light-gray, 50%);
-    line-height: 1.6;
+    margin: 0.4em 0 0.7em;
+    font-size: 1.02em;
+    font-weight: 500;
+    color: $text-color;
+    line-height: 1.55;
   }
 
   &__detail {
-    margin: 0.15em 0;
-    font-size: $type-size-6;
+    margin: 0.2em 0;
+    font-family: $monospace;
+    font-size: 0.7em;
+    line-height: 1.6;
     color: $light-gray;
 
     i {
       width: 1.25em;
       text-align: center;
-      color: $primary-color;
+      color: $haematoxylin;
     }
   }
 
@@ -126,17 +126,17 @@
     justify-content: center;
     width: 38px;
     height: 38px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.04);
-    color: $text-color;
-    font-size: 1em;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid $border-color;
+    color: $light-gray;
+    font-size: 0.95em;
     text-decoration: none;
     transition: $global-transition;
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.2);
-      background: $primary-color;
+      background: $haematoxylin;
+      border-color: $haematoxylin;
       color: #fff;
     }
   }
@@ -155,204 +155,14 @@
   }
 
   a {
-    color: $primary-color;
+    color: $haematoxylin;
     text-decoration: none;
-    border-bottom: 1px solid rgba(74, 103, 65, 0.3);
+    border-bottom: 1px solid $eosin-pale;
     transition: $global-transition;
 
     &:hover {
-      border-bottom-color: $primary-color;
-    }
-  }
-}
-
-/* ==========================================================================
-   TAROT CARDS — tucked behind center column on each side
-   ========================================================================== */
-
-.tarot-card {
-  /* Tarot proportions ~1:1.7 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 140px;
-  height: 238px;
-  padding: 1em 0.8em;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  position: relative;
-  border-radius: 10px;
-  z-index: 1;
-
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.7s ease;
-
-  /* Ornate inner border */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border-radius: 6px;
-    pointer-events: none;
-  }
-
-  &__icon {
-    font-size: 1.8em;
-    margin-bottom: 0.5em;
-    opacity: 0.85;
-    line-height: 1;
-  }
-
-  &__title {
-    font-size: 0.8em;
-    font-weight: 700;
-    margin-bottom: 0.35em;
-    line-height: 1.3;
-    letter-spacing: 0.02em;
-  }
-
-  &__desc {
-    font-size: 0.66em;
-    line-height: 1.45;
-  }
-
-  &__flourish {
-    display: block;
-    width: 36px;
-    height: 1px;
-    margin: 0.45em auto;
-  }
-
-  &__subtitle {
-    font-size: 0.58em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    opacity: 0.6;
-    margin-bottom: 0.2em;
-  }
-
-  &__list-item {
-    font-size: 0.72em;
-    font-weight: 600;
-    line-height: 1.7;
-    letter-spacing: 0.01em;
-  }
-
-  /* ---- Project variant: warm parchment ---- */
-  &--project {
-    background: linear-gradient(160deg, #fefdfb 0%, #faf8f4 50%, #f5f2ec 100%);
-    border: 2px solid #c9b99a;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08),
-                inset 0 0 20px rgba(201, 185, 154, 0.1);
-
-    &::before { border: 1px solid rgba(160, 140, 100, 0.4); }
-
-    .tarot-card__icon { color: $primary-color; }
-    .tarot-card__title { color: $dark-gray; }
-    .tarot-card__desc { color: mix(#000, $light-gray, 30%); }
-    .tarot-card__flourish {
-      background: linear-gradient(90deg, transparent, rgba(160, 140, 100, 0.6), transparent);
-    }
-  }
-
-  /* ---- Music variant: soft violet / rose ---- */
-  &--music {
-    background: linear-gradient(160deg, #fdfbfe 0%, #f8f4fb 50%, #f3edf8 100%);
-    border: 2px solid #c4a8d4;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08),
-                inset 0 0 20px rgba(180, 140, 200, 0.1);
-
-    &::before { border: 1px solid rgba(160, 120, 180, 0.35); }
-
-    .tarot-card__icon { color: #9b6fb0; }
-    .tarot-card__title { color: $dark-gray; }
-    .tarot-card__desc { color: mix(#000, $light-gray, 30%); }
-    .tarot-card__flourish {
-      background: linear-gradient(90deg, transparent, rgba(160, 120, 180, 0.5), transparent);
-    }
-    .tarot-card__subtitle { color: #9b6fb0; }
-    .tarot-card__list-item { color: $dark-gray; }
-  }
-
-  /* ---- Desktop positioning ---- */
-  display: none;
-
-  @media (min-width: 1100px) {
-    display: flex;
-    position: absolute;
-  }
-
-  /* Vertical positions — stacked from top with tight spacing */
-  &--pos-top    { @media (min-width: 1100px) { top: 2em; } }
-  &--pos-mid    { @media (min-width: 1100px) { top: calc(2em + 252px); } }
-  &--pos-bottom { @media (min-width: 1100px) { top: calc(2em + 252px); } }
-
-  /* LEFT side */
-  &--left {
-    @media (min-width: 1100px) {
-      right: calc(100% - 45px);
-      transform: rotate(-3deg);
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  right 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  box-shadow 0.7s ease;
-
-      &:hover {
-        right: calc(100% - 10px);
-        transform: rotate(0deg);
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-      }
-    }
-  }
-
-  /* RIGHT side */
-  &--right {
-    @media (min-width: 1100px) {
-      left: calc(100% - 45px);
-      transform: rotate(3deg);
-      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  left 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  box-shadow 0.7s ease;
-
-      &:hover {
-        left: calc(100% - 10px);
-        transform: rotate(0deg);
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-      }
-    }
-  }
-}
-
-/* On narrow screens, show cards in rows below content */
-@media (max-width: 1099px) {
-  .homepage-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .homepage-center {
-    order: -1;
-    width: 100%;
-  }
-
-  .tarot-card {
-    display: flex;
-    position: static;
-    margin: 0 0.5em 1.5em;
-
-    &--left  { transform: rotate(-2deg); }
-    &--right { transform: rotate(2deg); }
-
-    &:hover {
-      transform: translateY(-8px) rotate(0deg);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      color: $eosin;
+      border-bottom-color: $eosin;
     }
   }
 }
@@ -377,31 +187,32 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2em 1.5em;
+  padding: 1.6em 1.4em;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(160deg, #fefdfb 0%, #faf8f4 50%, #f5f2ec 100%);
-  border: 2px solid #c9b99a;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  transition: $global-transition;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #d6cbe2;
+    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
   }
 
   &__icon {
-    font-size: 2em;
-    color: $primary-color;
+    font-size: 1.4em;
+    color: $haematoxylin;
     margin-bottom: 0.6em;
-    opacity: 0.85;
   }
 
   &__title {
-    font-size: 1.05em;
+    font-family: $display;
+    font-size: 1.02em;
     font-weight: 700;
-    color: $dark-gray;
+    letter-spacing: -0.022em;
+    color: $haematoxylin-deep;
     margin-bottom: 0.4em;
   }
 
@@ -450,31 +261,32 @@ body.page--writing {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2em 1.5em;
+  padding: 1.6em 1.4em;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(160deg, #fefdfb 0%, #faf8f4 50%, #f5f2ec 100%);
-  border: 2px solid #c9b99a;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  transition: $global-transition;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #d6cbe2;
+    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
   }
 
   &__icon {
-    font-size: 2em;
-    color: $primary-color;
+    font-size: 1.4em;
+    color: $haematoxylin;
     margin-bottom: 0.6em;
-    opacity: 0.85;
   }
 
   &__title {
-    font-size: 1.05em;
+    font-family: $display;
+    font-size: 1.02em;
     font-weight: 700;
-    color: $dark-gray;
+    letter-spacing: -0.022em;
+    color: $haematoxylin-deep;
     margin-bottom: 0.4em;
   }
 
@@ -577,9 +389,9 @@ body.page--writing {
   text-align: center;
   padding: 2em 1.5em;
   background: linear-gradient(160deg, #fdfbfe 0%, #f8f4fb 50%, #f3edf8 100%);
-  border: 2px solid #c4a8d4;
+  border: 1px solid $border-color;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 
   &:hover {
