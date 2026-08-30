@@ -197,8 +197,8 @@
 
   &:hover {
     transform: translateY(-2px);
-    border-color: #d6cbe2;
-    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
+    border-color: var(--c-card-hover);
+    box-shadow: 0 10px 24px -12px var(--c-card-shadow);
   }
 
   &__icon {
@@ -268,8 +268,8 @@ body.page--writing {
 
   &:hover {
     transform: translateY(-2px);
-    border-color: #d6cbe2;
-    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
+    border-color: var(--c-card-hover);
+    box-shadow: 0 10px 24px -12px var(--c-card-shadow);
   }
 
   &__icon {
@@ -384,38 +384,40 @@ body.page--writing {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2em 1.5em;
-  background: linear-gradient(160deg, #fdfbfe 0%, #f8f4fb 50%, #f3edf8 100%);
+  padding: 1.6em 1.4em;
+  background: var(--c-surface);
   border: 1px solid $border-color;
-  border-radius: 10px;
-  
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 7px;
+  transition: $global-transition;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--c-card-hover);
+    box-shadow: 0 10px 24px -12px var(--c-card-shadow);
   }
 
   &__vinyl {
-    font-size: 2.5em;
-    color: #9b6fb0;
+    font-size: 1.4em;
+    color: $haematoxylin;
     margin-bottom: 0.6em;
-    opacity: 0.85;
   }
 
   &__name {
-    font-size: 1.1em;
+    font-family: $display;
+    font-size: 1.02em;
     font-weight: 700;
-    color: $dark-gray;
-    margin: 0 0 0.25em;
+    letter-spacing: -0.022em;
+    color: $haematoxylin-deep;
+    margin: 0 0 0.3em;
   }
 
   &__genre {
-    font-size: 0.78em;
-    font-weight: 600;
-    color: #9b6fb0;
-    margin: 0 0 0.6em;
-    letter-spacing: 0.03em;
+    font-family: $monospace;
+    font-size: 0.68em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $eosin;
+    margin: 0 0 0.7em;
   }
 
   &__note {

@@ -47,7 +47,7 @@ layout: default
       if (!text.trim()) return;
 
       var span = document.createElement('span');
-      // Split on word boundaries, preserving whitespace
+      /* Split on word boundaries, preserving whitespace */
       var parts = text.split(/(\s+)/);
       parts.forEach(function (part) {
         if (/^\s+$/.test(part)) {
@@ -55,7 +55,7 @@ layout: default
           return;
         }
         if (!part) return;
-        // Bold roughly the first half of the word (min 1 char)
+        /* Bold roughly the first half of the word (min 1 char) */
         var boldLen = Math.max(1, Math.ceil(part.length * 0.45));
         var b = document.createElement('b');
         b.textContent = part.slice(0, boldLen);
@@ -70,7 +70,7 @@ layout: default
   toggle.addEventListener('change', function () {
     if (toggle.checked) {
       if (!bionic) {
-        // Build bionic version
+        /* Build bionic version */
         var clone = content.cloneNode(true);
         toBionic(clone);
         bionic = clone.innerHTML;

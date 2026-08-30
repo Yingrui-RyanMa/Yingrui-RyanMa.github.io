@@ -47,8 +47,8 @@
 
   &:hover {
     transform: translateY(-2px);
-    border-color: #d6cbe2;
-    box-shadow: 0 10px 24px -12px rgba(91, 75, 138, 0.42);
+    border-color: var(--c-card-hover);
+    box-shadow: 0 10px 24px -12px var(--c-card-shadow);
   }
 
   &__cover {
