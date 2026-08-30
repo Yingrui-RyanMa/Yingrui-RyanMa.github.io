@@ -127,9 +127,14 @@ body.page--reading .masthead::before { background-image: url("data:image/svg+xml
   border-radius: 6px;
   background: var(--c-surface);
   color: var(--c-muted);
-  font-size: 0.8em;
   cursor: pointer;
   transition: $global-transition;
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+    display: block;
+  }
 
   &:hover {
     background: var(--c-haematoxylin);
