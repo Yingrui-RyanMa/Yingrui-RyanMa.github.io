@@ -1,5 +1,15 @@
-{% if site.url %}
-  {% assign base_path = site.url | append: site.baseurl %}
-{% else %}
-  {% assign base_path = site.github.url %}
-{% endif %}
+{% comment %}
+  Root-relative asset and link prefix.
+
+  This used to be `site.url | append: site.baseurl`, which stamped the
+  production host onto every asset URL. The effect was that a locally served
+  page loaded its CSS and JS from the live site, so local changes never showed
+  up in preview -- and it produced a doubled slash, because site.url already
+  ends in one.
+
+  site.baseurl is "" for a user site served at the domain root, so base_path
+  resolves to "" and every URL becomes root-relative: correct locally and in
+  production. Absolute URLs are still built from site.url where they are
+  genuinely needed, in seo.html and the feed.
+{% endcomment %}
+{% assign base_path = site.baseurl %}
