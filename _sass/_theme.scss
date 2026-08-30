@@ -1,0 +1,51 @@
+/* ==========================================================================
+   THEME TOKENS
+   The palette is expressed as CSS custom properties so it can be swapped at
+   runtime. The Sass variables in _variables.scss point at these, which means
+   the rest of the stylesheet inherits both themes without being rewritten.
+
+   Three states, deliberately:
+     :root                              -> light (the default)
+     prefers-color-scheme: dark         -> dark, unless the reader chose light
+     [data-theme="dark"|"light"]        -> the reader's explicit choice wins
+   ========================================================================== */
+
+:root {
+  --c-bg:            #fbfafc;  // slide white
+  --c-surface:       #ffffff;  // cards
+  --c-text:          #3e3450;
+  --c-heading:       #241c33;  // haematoxylin, concentrated
+  --c-muted:         #726c85;  // AA on both the page and card grounds
+  --c-border:        #e6e2ec;
+  --c-haematoxylin:  #5b4b8a;
+  --c-eosin:         #c9587b;
+  --c-eosin-pale:    #f4dce4;
+  --c-masthead:      rgba(251, 250, 252, 0.85);
+  --c-masthead-line: rgba(36, 28, 51, 0.08);
+  --c-card-shadow:   rgba(91, 75, 138, 0.42);
+  --c-code-bg:       #f1eef5;
+}
+
+/* Dark: a deep haematoxylin ground rather than neutral black, so the palette
+   still reads as the same two stains. Both stains are lifted to hold contrast
+   against a dark ground. */
+@mixin theme-dark {
+  --c-bg:            #14101c;
+  --c-surface:       #1e1829;
+  --c-text:          #ded7ea;
+  --c-heading:       #f2eef8;
+  --c-muted:         #9a92ad;
+  --c-border:        #2f2740;
+  --c-haematoxylin:  #a996e0;
+  --c-eosin:         #e88aa8;
+  --c-eosin-pale:    #3a2b3c;
+  --c-masthead:      rgba(20, 16, 28, 0.85);
+  --c-masthead-line: rgba(242, 238, 248, 0.10);
+  --c-card-shadow:   rgba(0, 0, 0, 0.55);
+  --c-code-bg:       #241c33;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include theme-dark; }
+}
+:root[data-theme="dark"] { @include theme-dark; }

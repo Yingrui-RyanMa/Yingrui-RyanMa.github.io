@@ -65,19 +65,19 @@
 /* Default notice */
 
 .notice {
-  @include notice($light-gray);
+  @include notice(#7c7690);
 }
 
 /* Primary notice */
 
 .notice--primary {
-  @include notice($primary-color);
+  @include notice(#5b4b8a);
 }
 
 /* Info notice */
 
 .notice--info {
-  @include notice($info-color);
+  @include notice(#5b4b8a);
 }
 
 /* Warning notice */

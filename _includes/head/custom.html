@@ -20,4 +20,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@600;700;800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- Resolve the theme before first paint so the page never flashes the
+     wrong one. Reads the reader's saved choice; falls back to the OS. -->
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") {
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  } catch (e) { /* private mode: fall through to the OS preference */ }
+})();
+</script>
+
 <!-- end custom head snippets -->

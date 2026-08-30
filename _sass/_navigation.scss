@@ -267,7 +267,7 @@
     padding: 8px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
-    background: #fff;
+    background: var(--c-surface);
     box-shadow: 0 4px 20px rgba(#000, 0.1);
 
     a {
@@ -363,7 +363,7 @@
   color: $text-color;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background-color: #fff;
+  background-color: var(--c-surface);
   border: 1px solid $border-color;
   border-radius: $border-radius;
   box-shadow: $box-shadow;

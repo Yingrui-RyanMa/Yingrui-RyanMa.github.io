@@ -57,30 +57,30 @@ $sidebar-link-max-width     : 250px;
    ========================================================================== */
 
 $gray                       : #7a8288;
-$dark-gray                  : #2d3436;
-$darker-gray                : #1a1424;
-$light-gray                 : #7c7690;
-$lighter-gray               : #f1eef5;
+$dark-gray                  : var(--c-heading);
+$darker-gray                : var(--c-heading);
+$light-gray                 : var(--c-muted);
+$lighter-gray               : var(--c-code-bg);
 
-$body-color                 : #fbfafc;
-$background-color           : #fbfafc;
-$code-background-color      : #f1eef5;
+$body-color                 : var(--c-bg);
+$background-color           : var(--c-bg);
+$code-background-color      : var(--c-code-bg);
 $code-background-color-dark : $light-gray;
-$text-color                 : #3e3450;
-$border-color               : #e6e2ec;
+$text-color                 : var(--c-text);
+$border-color               : var(--c-border);
 
-$primary-color              : #5b4b8a;
+$primary-color              : var(--c-haematoxylin);
 
 /* H&E stains — the site palette is drawn from haematoxylin and eosin */
-$haematoxylin               : #5b4b8a; // nuclei: deep violet
-$haematoxylin-deep          : #241c33; // ink
-$eosin                      : #c9587b; // cytoplasm: rose
-$eosin-pale                 : #f4dce4; // washed rose
-$slide-white                : #fbfafc; // the ground
+$haematoxylin               : var(--c-haematoxylin); // nuclei: deep violet
+$haematoxylin-deep          : var(--c-heading); // ink
+$eosin                      : var(--c-eosin); // cytoplasm: rose
+$eosin-pale                 : var(--c-eosin-pale); // washed rose
+$slide-white                : var(--c-bg); // the ground
 $success-color              : #6ab04c;
 $warning-color              : #f0932b;
 $danger-color               : #eb4d4b;
-$info-color                 : #5b4b8a;
+$info-color                 : var(--c-haematoxylin);
 
 /* brands */
 $behance-color              : #1769FF;
@@ -110,9 +110,9 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : #5b4b8a;
-$link-color-hover           : #c9587b;
-$link-color-visited         : #6d5c9c;
+$link-color                 : var(--c-haematoxylin);
+$link-color-hover           : var(--c-eosin);
+$link-color-visited         : var(--c-haematoxylin);
 $masthead-link-color        : $dark-gray;
 $masthead-link-color-hover  : $primary-color;
 
