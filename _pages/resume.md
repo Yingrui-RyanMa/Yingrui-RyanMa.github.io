@@ -1,5 +1,5 @@
 ---
-permalink: /cv/
+permalink: /resume
 redirect_to: /
 sitemap: false
 ---

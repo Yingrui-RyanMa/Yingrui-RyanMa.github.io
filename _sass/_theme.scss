@@ -4,10 +4,10 @@
    runtime. The Sass variables in _variables.scss point at these, which means
    the rest of the stylesheet inherits both themes without being rewritten.
 
-   Three states, deliberately:
-     :root                              -> light (the default)
-     prefers-color-scheme: dark         -> dark, unless the reader chose light
-     [data-theme="dark"|"light"]        -> the reader's explicit choice wins
+   Light is the default for everyone. The OS preference is deliberately not
+   consulted: this is a light site, and dark is opt-in. Dark applies only when
+   the reader has chosen it, which the toggle records in localStorage and the
+   head script replays before first paint.
    ========================================================================== */
 
 :root {
@@ -47,7 +47,4 @@
   --c-code-bg:       #241c33;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { @include theme-dark; }
-}
 :root[data-theme="dark"] { @include theme-dark; }

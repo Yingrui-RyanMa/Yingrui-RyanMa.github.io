@@ -56,6 +56,48 @@ layout: default
           {{ content }}
         </div>
       {% endif %}
+
+      {% assign cv = site.data.cv %}
+      {% if cv.timeline %}
+      <section class="cv" aria-labelledby="cv-heading">
+        <div class="cv__head">
+          <h2 class="cv__heading" id="cv-heading">Curriculum</h2>
+          <span class="stain-rule" aria-hidden="true"></span>
+        </div>
+
+        <p class="cv-key">
+          <span class="cv-key__item cv-key__item--education">Study</span>
+          <span class="cv-key__item cv-key__item--research">Work</span>
+        </p>
+
+        <ol class="cv-timeline">
+          {% for item in cv.timeline %}
+          <li class="cv-entry cv-entry--{{ item.kind }}{% if item.current %} cv-entry--current{% endif %}">
+            <span class="cv-entry__node" aria-hidden="true"></span>
+            <p class="cv-entry__period">{{ item.period }}</p>
+            <h3 class="cv-entry__role">{{ item.role }}</h3>
+            <p class="cv-entry__place">{{ item.place }}</p>
+          </li>
+          {% endfor %}
+        </ol>
+
+        <div class="cv-coda">
+          <div class="cv-coda__block">
+            <p class="cv-coda__label">Research interests</p>
+            <ul class="cv-tags">
+              {% for i in cv.interests %}<li>{{ i }}</li>{% endfor %}
+            </ul>
+          </div>
+          <div class="cv-coda__block">
+            <p class="cv-coda__label">Skills</p>
+            <dl class="cv-skills">
+              {% for s in cv.skills %}<dt>{{ s.label }}</dt><dd>{{ s.value }}</dd>{% endfor %}
+            </dl>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
     </div>
   </div>
 </div>

@@ -1,0 +1,50 @@
+# Timeline shown on the homepage, newest first.
+# `kind` is either "education" or "research" and drives the marker styling.
+
+timeline:
+  - period: "2024 — Present"
+    kind: education
+    role: "PhD, Cancer &amp; Pharmaceutical Sciences"
+    place: "King's College London"
+    current: true
+
+  - period: "2023 — 2024"
+    kind: research
+    role: "Research Assistant"
+    place: "King's College London"
+
+  - period: "2021 — 2022"
+    kind: education
+    role: "MSc Human &amp; Biological Robotics"
+    place: "Imperial College London"
+
+  - period: "2020"
+    kind: research
+    role: "Undergraduate Teaching Assistant"
+    place: "University of Nottingham Ningbo China"
+
+  - period: "2020"
+    kind: research
+    role: "Summer Research Intern"
+    place: "Siasun Robot &amp; Automation Co., Ltd."
+
+  - period: "2017 — 2021"
+    kind: education
+    role: "BSc Computer Science with Artificial Intelligence"
+    place: "University of Nottingham Ningbo China"
+
+
+interests:
+  - Computational Pathology
+  - Multi-modal Deep Learning
+  - Cancer Research
+  - Histopathology
+  - Transcriptomics
+
+skills:
+  - label: Programming
+    value: "Python, deep learning frameworks"
+  - label: Research
+    value: "Computational pathology, multi-modal data analysis"
+  - label: Domain
+    value: "Histopathology, transcriptomics, cancer research"

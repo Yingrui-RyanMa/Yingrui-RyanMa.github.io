@@ -12,8 +12,8 @@ This document explains the structure of this Jekyll academic website and where t
 | Site title & description | `_config.yml` (top section) |
 | Profile picture | Replace `images/profile.jpg` |
 | Homepage greeting & content | `_pages/about.md` and `_layouts/homepage.html` |
-| Homepage tarot cards (projects & music) | `_layouts/homepage.html` |
-| CV / Resume | `_pages/cv.md` |
+| CV timeline on the homepage | `_data/cv.yml` |
+| Colours, fonts, dark theme | `_sass/_theme.scss` |
 | Publications list | `_pages/publications.html` |
 | Library (books & podcasts) | `_pages/reading.html` |
 | Writing page (dream stories) | `_pages/writing.html` |
@@ -32,7 +32,8 @@ This document explains the structure of this Jekyll academic website and where t
 .
 ├── _config.yml              # MAIN config — personal info, site settings
 ├── _data/
-│   └── navigation.yml       # Top navigation bar links
+│   ├── navigation.yml       # Top navigation bar links
+│   └── cv.yml               # CV timeline shown on the homepage
 ├── _pages/                  # Top-level pages
 │   ├── about.md             # Homepage (permalink: /)
 │   ├── projects.html        # Projects archive page (permalink: /projects/)
@@ -40,7 +41,8 @@ This document explains the structure of this Jekyll academic website and where t
 │   ├── reading.html         # Library page (permalink: /library/, redirects from /reading/)
 │   ├── writing.html         # Writing page (permalink: /writing/)
 │   ├── publications.html    # Publications page
-│   ├── cv.md                # CV page
+│   ├── cv.md                # Redirect only: /cv/ -> homepage
+│   ├── resume.md            # Redirect only: /resume -> homepage
 │   └── 404.md               # 404 error page
 ├── _portfolio/              # Project collection pages
 │   ├── histopath-dl.md      # Deep Learning for Histopathology project
@@ -51,11 +53,13 @@ This document explains the structure of this Jekyll academic website and where t
 │   ├── homepage.html        # Homepage layout (hero + tarot side cards)
 │   ├── writing.html         # Writing story layout (bionic reading toggle)
 │   ├── single.html          # Single page layout (used by library, portfolio pages)
-│   ├── archive.html         # Archive layout (used by publications, CV, projects, music, writing)
+│   ├── archive.html         # Archive layout (publications, projects, music, writing)
 │   └── default.html         # Base layout wrapping all pages
 ├── _includes/               # Reusable HTML partials
 ├── _sass/                   # SCSS stylesheets
-│   ├── _homepage.scss       # Homepage hero, tarot cards, project/music/writing archive styles
+│   ├── _theme.scss          # Colour tokens for both themes
+│   ├── _homepage.scss       # Homepage hero, project/music/writing archive styles
+│   ├── _cv.scss             # Homepage CV timeline
 │   ├── _reading.scss        # Library page card & rating styles
 │   ├── _page.scss           # Single page layout styles
 │   ├── _archive.scss        # Archive layout styles
@@ -103,20 +107,27 @@ Replace this file with your own photo. Keep the filename `profile.jpg` or update
 - The big greeting ("Hey there, I'm ...") is generated from `author.name` in `_config.yml`. To change the greeting text itself, edit `_layouts/homepage.html`
 - Edit the markdown body in `about.md` to change the introductory text below the hero
 
-#### Homepage Tarot Cards
+#### CV timeline
 
-The homepage features tarot-style cards that peek from the sides of the main content column. On desktop (≥1100px), cards are partially tucked behind the center column and slide out on hover. On mobile, they stack below the content.
+Below the introduction the homepage shows your career as a two-track timeline:
+study runs down the left of a central spine, work down the right, so the years
+where the two overlap are visible at a glance. It is deliberately static — no
+scroll animation — and folds to a single column on narrow screens.
 
-There are two card types, each with a distinct color scheme:
-- **Project cards** (warm parchment, gold border) — link to portfolio pages
-- **Music card** (violet/rose, purple border) — links to the music page
+The entries come from **`_data/cv.yml`**, not from markup. To add a role:
 
-Cards are defined directly in `_layouts/homepage.html`. Each card uses CSS classes to control its side and vertical position:
-- Side: `tarot-card--left` or `tarot-card--right`
-- Position: `tarot-card--pos-top`, `tarot-card--pos-mid`, or `tarot-card--pos-bottom`
-- Type: `tarot-card--project` or `tarot-card--music`
+```yaml
+timeline:
+  - period: "2024 — Present"   # years only, no months
+    kind: education            # "education" (left lane) or "research" (right lane)
+    role: "PhD, Cancer &amp; Pharmaceutical Sciences"
+    place: "King's College London"
+    current: true              # optional; adds the halo on the marker
+```
 
-To add a new card, add an `<a class="tarot-card ...">` block in `homepage.html`. Styles are in `_sass/_homepage.scss`.
+Each entry shows just those three lines — years, role, place. Entries render in
+file order, so keep them newest first. The same file holds the `interests` and
+`skills` lists shown underneath. Styles are in `_sass/_cv.scss`.
 
 ### 4. Projects (`_pages/projects.html` + `_portfolio/`)
 
@@ -146,7 +157,7 @@ author_profile: false
 ### 6. Writing (`_pages/writing.html` + `_writing/`)
 
 - **Archive page permalink:** `/writing/`
-- **Body class:** `page--writing` (enables 🌙😴 emoji background and justified text)
+- **Body class:** `page--writing` (puts 🌙😴 in the header band and justifies the text)
 - Lists all items from the `_writing/` collection in a card grid
 - Individual story pages use the `writing` layout (`_layouts/writing.html`), which includes an **ADHD-friendly bionic reading toggle** in the top-right corner. When enabled, the first half of each word is bolded to aid focus.
 - To add a new story: create a markdown file in `_writing/` with front matter:
@@ -173,7 +184,7 @@ author_profile: false
 ### 8. Library (`_pages/reading.html`)
 
 - **Permalink:** `/library/` (redirects from `/reading/`)
-- **Layout:** `single` with body class `page--reading` (enables emoji background)
+- **Layout:** `single` with body class `page--reading` (puts 📚📖 in the header band)
 - Items are displayed as cards in a grid, organized into sections:
   - **Reading - Books** — currently reading
   - **Done - Books** — finished books
@@ -212,11 +223,14 @@ Each item has a 5-star rating using Unicode star characters (`★`) with CSS cla
 
 Example for 3.5 stars: 3× `star--filled`, 1× `star--half`, 1× `star--empty`.
 
-### 9. CV Page (`_pages/cv.md`)
+### 9. CV (`_data/cv.yml`)
 
-- **Permalink:** `/cv/`
-- Contains: Education, Research Experience, Research Interests, Skills
-- All content is hand-written markdown — update directly
+The standalone CV page was removed — the content now lives on the homepage as
+the two-track timeline described above. Edit `_data/cv.yml`.
+
+`_pages/cv.md` and `_pages/resume.md` survive as redirect stubs only, so the
+old `/cv/` and `/resume` URLs still land somewhere useful instead of 404ing.
+Both are excluded from the sitemap.
 
 ### 10. Navigation Bar (`_data/navigation.yml`)
 
@@ -234,8 +248,6 @@ main:
     url: /library/
   - title: "Publications"
     url: /publications/
-  - title: "CV"
-    url: /cv/
 ```
 
 To add a new page: add an entry here and create a corresponding file in `_pages/`.
@@ -246,9 +258,53 @@ Place any PDFs, slides, or documents here. They'll be accessible at `/files/file
 
 ---
 
+### 12. Colours and the dark theme (`_sass/_theme.scss`)
+
+The palette is drawn from H&E staining: haematoxylin violet `#5b4b8a` and
+eosin rose `#c9587b` on a slide-white ground. Every colour is a CSS custom
+property in `_sass/_theme.scss`, and the Sass variables in `_variables.scss`
+point at those — so changing a colour there changes it site-wide, in both
+themes.
+
+**Light is the default for everyone.** The operating system preference is
+deliberately not consulted; dark is opt-in via the toggle in the header. The
+choice is kept in the reader's browser and applied before the page paints, so
+it never flashes the wrong theme.
+
+To retune a colour, edit the matching pair in `:root` (light) and the
+`theme-dark` mixin (dark). Keep both in step or one theme will drift.
+
+### 13. The header emoji band
+
+The emoji sit in a strip behind the navigation rather than tiling the page.
+Each area of the site carries its own set — science site-wide, 🌙😴 on the
+writing pages, 📚📖 in the library — so the band says which room you are in.
+They are defined in `_sass/_masthead.scss` as SVG data URIs.
+
+Emoji built from a zero-width joiner (👨‍🔬, 👨‍💻) are percent-encoded there
+rather than pasted in literally: the joiner is invisible and does not reliably
+survive an edit, and without it the emoji renders as two separate glyphs.
+
+---
+
+## Gotcha: inline scripts
+
+**Never use `//` comments inside an inline `<script>` in this repo. Use `/* */`.**
+
+The `compress.html` layout strips newlines, so a `//` comment swallows the rest
+of the script once it is collapsed onto one line — including the closing
+`})();` — and the whole block fails to parse with
+`SyntaxError: Unexpected end of input`.
+
+It only breaks in the built output, never in the source, so check a built page
+rather than the file if a script mysteriously does nothing. This silently
+disabled the bionic reading toggle for months.
+
+---
+
 ## Layout Notes
 
-- Pages with `author_profile: false` (Library, Writing, Publications, CV, Projects, Music, Portfolio) display content centered without the sidebar
+- Pages with `author_profile: false` (Library, Writing, Publications, Projects, Music, Portfolio) display content centered without the sidebar
 - The centered layout is handled via CSS `#main > &:first-child` rules in `_page.scss` and `_archive.scss`
 - The homepage uses its own `homepage` layout with a hero section and tarot side cards
 - The main content column has a thin border (`rgba(201, 185, 154, 0.35)`) that visually connects with the tarot cards

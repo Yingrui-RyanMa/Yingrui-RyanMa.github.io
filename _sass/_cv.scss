@@ -1,0 +1,242 @@
+/* ==========================================================================
+   CV TIMELINE (homepage)
+
+   The spine is the stain rule turned vertical: haematoxylin at the top
+   running into eosin at the bottom. It fills as you scroll, so the signature
+   does the work rather than a new decorative device.
+   ========================================================================== */
+
+.cv {
+  max-width: 720px;
+  margin: 0 auto 4em;
+  padding: 0 1.5em;
+}
+
+.cv__head {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  margin-bottom: 1.8em;
+}
+
+.cv__heading {
+  margin: 0;
+  font-family: $display;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $haematoxylin;
+  white-space: nowrap;
+}
+
+.cv__head .stain-rule {
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, $haematoxylin, $eosin 70%, $eosin-pale);
+}
+
+/* ---- two tracks sharing one spine ----
+   Study runs down the left, work down the right. The split is not decorative:
+   it is the only arrangement that shows the research post and the PhD running
+   concurrently, which a single column flattens away. Below $medium there is no
+   room for two lanes, so it folds to one.
+   ---------------------------------------------------------------------- */
+
+.cv-key {
+  display: flex;
+  gap: 1.4em;
+  margin: 0 0 1.4em;
+  font-family: $monospace;
+  font-size: 0.62em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $light-gray;
+
+  @include breakpoint($medium) {
+    justify-content: center;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+
+    &::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 2px solid $haematoxylin;
+      background: $haematoxylin;
+    }
+  }
+
+  &__item--research::before {
+    border-color: $eosin;
+    background: var(--c-bg);
+  }
+}
+
+.cv-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 1.9em;
+  list-style: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0.4em;
+    bottom: 0.4em;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, $haematoxylin, $eosin);
+  }
+
+  @include breakpoint($medium) {
+    padding: 0;
+
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ---- an entry ---- */
+
+.cv-entry {
+  position: relative;
+  padding-bottom: 2.1em;
+
+  &:last-child { padding-bottom: 0; }
+
+  &__node {
+    position: absolute;
+    left: -1.9em;
+    top: 0.42em;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--c-bg);
+    border: 2px solid $haematoxylin;
+  }
+
+  /* the two kinds read differently: study is filled, work is hollow */
+  &--education .cv-entry__node { background: $haematoxylin; }
+  &--research  .cv-entry__node { border-color: $eosin; }
+
+  &--current .cv-entry__node {
+    box-shadow: 0 0 0 4px rgba(91, 75, 138, 0.16);
+  }
+
+  &__period {
+    margin: 0 0 0.25em;
+    font-family: $monospace;
+    font-size: 0.68em;
+    letter-spacing: 0.06em;
+    color: $light-gray;
+  }
+
+  &__role {
+    margin: 0 0 0.15em;
+    font-family: $display;
+    font-size: 1.02em;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.25;
+    color: $haematoxylin-deep;
+  }
+
+  &__place {
+    margin: 0;
+    font-size: 0.9em;
+    color: $text-color;
+  }
+
+  /* ---- the two lanes ---- */
+  @include breakpoint($medium) {
+    width: calc(50% - 1.7em);
+
+    &--education {
+      margin-right: auto;
+      text-align: right;
+
+      .cv-entry__node { left: auto; right: -2.3em; }
+
+    }
+
+    &--research {
+      margin-left: auto;
+
+      .cv-entry__node { left: -2.3em; }
+    }
+  }
+}
+
+/* ---- interests and skills ---- */
+
+.cv-coda {
+  display: grid;
+  gap: 1.8em;
+  margin-top: 2.6em;
+  padding-top: 1.8em;
+  border-top: 1px solid $border-color;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4em;
+  }
+}
+
+.cv-coda__label {
+  margin: 0 0 0.7em;
+  font-family: $monospace;
+  font-size: 0.64em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $light-gray;
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-size: 0.78em;
+    padding: 0.28em 0.6em;
+    border-radius: 4px;
+    border: 1px solid $border-color;
+    background: var(--c-surface);
+    color: $text-color;
+  }
+}
+
+.cv-skills {
+  margin: 0;
+
+  dt {
+    font-family: $monospace;
+    font-size: 0.66em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $eosin;
+    margin-top: 0.7em;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  dd {
+    margin: 0.15em 0 0;
+    font-size: 0.86em;
+    line-height: 1.5;
+    color: $text-color;
+  }
+}

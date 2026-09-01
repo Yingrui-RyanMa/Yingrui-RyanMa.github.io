@@ -31,7 +31,9 @@ docker run -p 4000:4000 --rm -v $(pwd):/usr/src/app jekyll-site
 |---|---|
 | Site + author config | `_config.yml` |
 | Top navigation | `_data/navigation.yml` |
-| Pages (`/`, `/cv/`, `/library/`, …) | `_pages/` |
+| CV timeline on the homepage | `_data/cv.yml` |
+| Colours and the dark theme | `_sass/_theme.scss` |
+| Pages (`/`, `/library/`, `/writing/`, …) | `_pages/` |
 | Project write-ups | `_portfolio/` |
 | Dream stories | `_writing/` |
 | Page templates | `_layouts/` |
